@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxfmh7gdlrnue"]
+
+[ext_resource type="PackedScene" uid="uid://buc88tei4kypb" path="res://scenes/gameobjects/city/city.tscn" id="1_2uust"]
+[ext_resource type="Texture2D" uid="uid://d1v6uejb7m25c" path="res://scenes/ui/work_station/WorkStationMask.png" id="1_mnylo"]
+[ext_resource type="PackedScene" uid="uid://1y1kolovbm8c" path="res://scenes/gameobjects/dyno_scope/dyno_scope.tscn" id="2_yykbs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a25tb"]
+bg_color = Color(0.203922, 0.168627, 0.0784314, 1)
+
+[node name="WorkStation" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.537255, 0.537255, 0.537255, 1)
+offset_right = 800.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_mnylo")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainViewportMarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MainViewportMarginContainer" groups=["world_viewport_container"]]
+z_index = -2
+custom_minimum_size = Vector2(480, 360)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+stretch = true
+
+[node name="MainViewport" type="SubViewport" parent="MainViewportMarginContainer/SubViewportContainer" groups=["world_viewport"]]
+unique_name_in_owner = true
+handle_input_locally = false
+size = Vector2i(480, 360)
+render_target_update_mode = 4
+
+[node name="City" parent="MainViewportMarginContainer/SubViewportContainer/MainViewport" instance=ExtResource("1_2uust")]
+
+[node name="ItemsMarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="PanelContainer" type="PanelContainer" parent="ItemsMarginContainer"]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a25tb")
+
+[node name="DynoScope" parent="." instance=ExtResource("2_yykbs")]
+offset_left = 93.0
+offset_top = 476.0
+offset_right = 133.0
+offset_bottom = 516.0
+
+[node name="DynoScope2" parent="." instance=ExtResource("2_yykbs")]
+offset_left = 227.0
+offset_top = 476.0
+offset_right = 267.0
+offset_bottom = 516.0
+
+[node name="DynoScope3" parent="." instance=ExtResource("2_yykbs")]
+offset_left = 371.0
+offset_top = 471.0
+offset_right = 411.0
+offset_bottom = 511.0

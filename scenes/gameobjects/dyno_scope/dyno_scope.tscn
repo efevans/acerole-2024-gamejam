@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://1y1kolovbm8c"]
+
+[ext_resource type="Texture2D" uid="uid://g0pi8tyspywf" path="res://scenes/gameobjects/dyno_scope/magnifyingglass.png" id="1_0evm7"]
+[ext_resource type="Shader" path="res://scenes/gameobjects/dyno_scope/dyno_scope.gdshader" id="1_h5alw"]
+[ext_resource type="Script" path="res://scenes/gameobjects/dyno_scope/dyno_scope.gd" id="1_ypj4n"]
+[ext_resource type="Texture2D" uid="uid://43rnbwi6grao" path="res://scenes/gameobjects/dyno_scope/magnifiyingguynegative2.png" id="2_e5ned"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ak4w"]
+shader = ExtResource("1_h5alw")
+shader_parameter/transition_texture = ExtResource("2_e5ned")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_7cas3"]
+
+[node name="DynoScope" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+script = ExtResource("1_ypj4n")
+
+[node name="Middle" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ViewportTexture" type="TextureRect" parent="Control"]
+unique_name_in_owner = true
+z_index = -1
+material = SubResource("ShaderMaterial_5ak4w")
+layout_mode = 0
+offset_left = -120.0
+offset_top = -90.0
+offset_right = 360.0
+offset_bottom = 270.0
+scale = Vector2(0.5, 0.5)
+texture = SubResource("ViewportTexture_7cas3")
+
+[node name="ScopeTexture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -63.0
+offset_top = -60.0
+offset_right = 237.0
+offset_bottom = 240.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_0evm7")
+metadata/_edit_lock_ = true
+
+[node name="SubViewport" type="SubViewport" parent="."]
+unique_name_in_owner = true
+size = Vector2i(480, 360)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+unique_name_in_owner = true
+projection = 1
+size = 0.5

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b24lujs2u3xs2"]
+
+[ext_resource type="Texture2D" uid="uid://hlb48rn01xo6" path="res://assets/npcs/placeholders/human.png" id="1_7moh6"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ffqpf"]
+radius = 0.0878849
+
+[node name="NPC" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture_filter = 0
+texture = ExtResource("1_7moh6")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_ffqpf")
